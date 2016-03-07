@@ -1,0 +1,164 @@
+body{
+	
+	font-family:sans-serif;
+	margin:0;
+	padding:0;
+    background: rgba(0, 0, 0, 0) url("../img/body-background.jpg") no-repeat fixed center center / cover ;
+}
+
+
+.layout-wrap{
+	width:1000px;
+	margin:0 auto;
+	padding:15px 15px 15px 15px;
+	
+}
+
+header{
+	
+	height:68px;
+	background:black;
+}
+.search-box{
+	float:right;
+	
+}
+.search-box>input{
+	height:25px;
+	margin:0;
+	padding:0;
+	border:0;
+}
+
+
+.page-body{
+	
+	background: rgba(107,113,113,0.4);
+}
+
+.notifications{
+	height:20px;
+	padding:8px 0 8px 0;
+	background:rgb(235,235,235);
+	
+	
+}
+.hidden{
+	
+	display:none;
+}
+ .no-style{
+	margin:0;
+	 padding:0;
+	 list-style:none;	 
+	 text-decoration:none;
+ }
+
+/**************************************************************** nav-section  **************************************/
+
+.nav-section{
+	display:inline-block;
+	height:130px;
+	background:white;
+	width:32%;
+	margin:15px 0 15px 0;
+	color:white;
+	text-align:center;
+}
+
+
+.menu{
+	
+	
+	
+}
+.menu-caption{
+	margin:56px 0 0 0 ;
+	height:30px;
+	background:rgb(235,235,235);
+	text-align:left;
+	color:black;
+	font-size:12px;
+
+}
+.menu-caption>p{
+padding:7px 0 0 7px;
+
+}
+.l-nav-i{
+	float:left;
+	background: url("../img/icons/action-report-new.png") left 50% top 55px no-repeat black;
+}
+.m-nav-i{
+	margin-left:20px;
+	background: url("../img/icons/action-report-top.png") left 50% top 55px no-repeat black;
+
+}
+.r-nav-i{
+	
+	float:right;
+    background: url("../img/icons/actions-help.png") left 50% top 55px no-repeat black;
+
+}
+.menu:hover .action-list{
+ display:block;	
+}
+
+
+.action-list{
+	
+	position:absolute;
+	background:white;
+	width:320px;
+	  color:black;
+
+}
+.action-list li{
+	padding-top:10px;
+  height:30px;
+  border-bottom:solid #e6e6e6 1px;
+  font-size:12px;
+
+}
+.action-list a{
+text-decoration:none;
+  color:black;
+
+
+}
+/**************************************************************** tabs  **************************************/
+
+.tab{
+	display:inline-block ;
+	width:23%;
+	height:35px;
+	background-color:rgb(100,100,100);
+	text-align:center;
+	margin-left:22px;
+	padding-top:15px;
+
+
+}
+.tab>a{
+	    text-decoration:none;
+		color:white;
+		font-size:12px;
+		
+
+}
+.tabs-list{
+	
+	margin-top:15px;
+}
+.tabs-list >:first-child{
+	
+	margin-left:0;
+}
+
+
+
+
+
+
+
+
