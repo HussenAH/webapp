@@ -21,7 +21,7 @@
 	</header>
 
 	<section class="page-body layout-wrap">
-		<div class="notifications"> notification</div>
+		<div class="notifications"></div>
 
 		<nav>
 			<div class="nav-section l-nav-i">
@@ -78,25 +78,91 @@
 
 		<section class="tabs">
 			<ul class="tabs-list no-style">
-				<li class="tab"><a href="#quick-reports">Quick Reports</a></li>
-				<li class="tab"><a href="#my-folders">My Folders</a></li>
-				<li class="tab"><a href="#my-team-folders">My Team Folders</a></li>
-				<li class="tab"><a href="#public-folders">Public Folders</a></li>
+				<li ><a href="#quick-reports">Quick Reports</a></li>
+				<li ><a href="#my-folders">My Folders</a></li>
+				<li ><a href="#my-team-folders">My Team Folders</a></li>
+				<li ><a href="#public-folders">Public Folders</a></li>
 			</ul>
 
-			<div id="quick-reports">
+			<div id=" quick-reports" class="tab">
+                <div class="user-tools">
+	                <div class="expand-btn hidden ">
+						<a class="" target="" href="#" id="">   <!-- add class = hidden  -->
+							<img src="img/icons/expand.png" alt="">
+						</a>
+	                </div>
+	                <div class="settings-btn">
+						<button  class="" id="" >
+							<img src="img/icons/settings.png" alt="">
+						</button>  
+	                </div>
+                </div>
+
+
+
+                <div class="reports-area">
+					<ul class="no-style reports-list">
+						<li class="report">
+							<label class="report-content">Report 01</label>
+							<div class="report-content report-name">
+								<label for="name-in">Name</label>
+								<input class="name-in"></input>
+							</div>
+							<div class="report-content report-url">
+								<label for="url-in">URL</label>
+								<input class="url-in"></input>
+							</div>
+						</li>
+						<li class="report">
+							<label class="report-content">Report 01</label>
+							<div class="report-content report-name">
+								<label for="name-in">Name</label>
+								<input class="name-in"></input>
+							</div>
+							<div class="report-content report-url">
+								<label for="url-in">URL</label>
+								<input class="url-in"></input>
+							</div>
+						</li>
+						<li class="report">
+							<label class="report-content">Report 01</label>
+							<div class="report-content report-name">
+								<label for="name-in">Name</label>
+								<input class="name-in"></input>
+							</div>
+							<div class="report-content report-url">
+								<label for="url-in">URL</label>
+								<input class="url-in"></input>
+							</div>
+						</li>
+
+
+					</ul>
+					<div class="save-btn">
+						<button >save</button>
+					</div>
+
+				</div>
+                <div>
+
+					<div>
+						<iframe class="frame-window "src="https://www.alarab.co"></iframe>
+					</div>
+				</div>
+
+			<div id="tab my-folders" class="tab">
 			</div>
 
-			<div id="my-folders">
+			<div id="tab my-team-folders" class="tab">
 			</div>
 
-			<div id="my-team-folders">
-			</div>
-
-			<div id="public-folders">
+			<div id="tab public-folders" class="tab">
 			</div>
 		</section>
 	</section>
+
+
+	<script type="text/javascript" src="js/plugins.js"></script>
 
 	<script src="js/main.js"></script>
 </body>

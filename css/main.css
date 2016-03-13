@@ -4,14 +4,16 @@ body{
 	margin:0;
 	padding:0;
     background: rgba(0, 0, 0, 0) url("../img/body-background.jpg") no-repeat fixed center center / cover ;
+	min-width:492px;
 }
 
 
 .layout-wrap{
-	width:1000px;
+	width:85%;
 	margin:0 auto;
-	padding:15px 15px 15px 15px;
-	
+	/*padding:15px 15px 15px 15px;*/
+	padding:1.5% 1.5% 1.5% 1.5%;
+
 }
 
 header{
@@ -61,7 +63,8 @@ header{
 	height:130px;
 	background:white;
 	width:32%;
-	margin:15px 0 15px 0;
+	/*margin:15px 0 15px 0;*/
+	margin:2% 0 2% 0;
 	color:white;
 	text-align:center;
 }
@@ -82,7 +85,8 @@ header{
 
 }
 .menu-caption>p{
-padding:7px 0 0 7px;
+/*padding:7px 0 0 7px;*/
+padding:2% 0 0 2%;
 
 }
 .l-nav-i{
@@ -90,7 +94,9 @@ padding:7px 0 0 7px;
 	background: url("../img/icons/action-report-new.png") left 50% top 55px no-repeat black;
 }
 .m-nav-i{
-	margin-left:20px;
+	/*margin-left:20px;*/
+	margin-left:2%;
+
 	background: url("../img/icons/action-report-top.png") left 50% top 55px no-repeat black;
 
 }
@@ -100,7 +106,7 @@ padding:7px 0 0 7px;
     background: url("../img/icons/actions-help.png") left 50% top 55px no-repeat black;
 
 }
-.menu:hover .action-list{
+.nav-section:hover .action-list{
  display:block;	
 }
 
@@ -109,37 +115,39 @@ padding:7px 0 0 7px;
 	
 	position:absolute;
 	background:white;
-	width:320px;
-	  color:black;
+	width:27.2%;
+	color:black;
 
 }
 .action-list li{
-	padding-top:10px;
+	padding-top:2%;
   height:30px;
   border-bottom:solid #e6e6e6 1px;
   font-size:12px;
 
 }
 .action-list a{
-text-decoration:none;
+  text-decoration:none;
   color:black;
-
+	float:left;
+	padding-left:3%;
 
 }
 /**************************************************************** tabs  **************************************/
 
-.tab{
+.tabs-list >li{
 	display:inline-block ;
-	width:23%;
+	width:23.4%;
 	height:35px;
 	background-color:rgb(100,100,100);
 	text-align:center;
-	margin-left:22px;
+	/*margin-left:22px;*/
+	margin-left:1%;
 	padding-top:15px;
 
 
 }
-.tab>a{
+.tabs-list >li>a{
 	    text-decoration:none;
 		color:white;
 		font-size:12px;
@@ -155,7 +163,114 @@ text-decoration:none;
 	margin-left:0;
 }
 
+/**************************************************************** report  **************************************/
 
+.tab{
+	background:rgb(235,235,235);
+	
+}
+
+.user-tools{
+	
+	float:right;
+	margin:1.5% 2% 0 0 ;
+}
+.settings-btn {
+	width:35px;
+	height:35px;
+}
+.settings-btn button{
+	border:0;
+	padding:0;
+	margin:0;
+	background:white;
+	width:100%;
+	height:100%;
+
+}
+
+.reports-area{
+	display:none;
+	clear:right;
+	background-color:white;
+	border:rgb(235, 235, 235) solid 1px;
+    box-shadow: 2px 2px 2px 2px rgb(210, 210, 210);
+	padding:2%;
+	margin:2%;
+	font-size:12px;
+	border:0;
+
+	
+}
+.report{
+	
+	background-color:rgb(235, 235, 235);
+    margin-bottom:1%;
+    padding:1%;	
+}
+
+.report-content{
+	
+	display:inline-block;
+	color:grey;
+}
+
+.report-name{
+	width:30%;
+	margin-left:7%;
+	display:inline-block;
+}
+.report-url{
+	width:40%;
+	margin-left:4%;
+	float:right;
+}
+.report-name >input{	
+	width:70%;
+	border:0;
+	float:right;
+		height:20px;
+
+
+}
+
+.report-url >input{	
+	width:80%;
+	border:0;
+	float:right;
+		height:20px;
+
+
+}
+
+.frame-window{
+	width:100%;
+	height:1000px;
+	margin-top:1.5%;
+	border:0;
+	
+}
+
+.save-btn>button{
+	width:10%;
+	margin: 0 0 0 89%;
+	background-color:black;
+	color:white;
+	border:0;
+	padding:3px;
+	float:right;
+	
+	
+	
+}
+
+.save-btn{
+	margin:3% 0 1% 0 ;
+	height:20px;
+	
+	
+}
+/****************************************************************    **************************************/
 
 
 
