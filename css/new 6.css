@@ -1,3 +1,4 @@
+
 body{
 	
 	font-family:sans-serif;
@@ -89,26 +90,6 @@ header{
 padding:2% 0 0 2%;
 
 }
-
-
-
-.menu-caption>p:after{
-	content: "";
-    float: right;
-    margin: 2%;
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 10px solid black;
-
-}
-
-.nav-section:hover .menu-caption>p:after{
-	  transform:rotate(180deg);
-	 transition-duration: 0.4s;
-
-}
 .l-nav-i{
 	float:left;
 	background: url("../img/icons/action-report-new.png") left 50% top 55px no-repeat black;
@@ -130,7 +111,20 @@ padding:2% 0 0 2%;
  display:block;	
 }
 
-
+.menu-caption > p:after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid black;
+    float: right;
+    margin: 2%;
+}
+.nav-section:hover {
+	
+	
+}
 .action-list{
 	
 	position:absolute;
@@ -155,7 +149,7 @@ padding:2% 0 0 2%;
 }
 /**************************************************************** tabs  **************************************/
 
-#tabs-list >li{
+.tabs-list >li{
 	display:inline-block ;
 	width:23.4%;
 	height:35px;
@@ -167,70 +161,62 @@ padding:2% 0 0 2%;
 
 
 }
-#tabs-list >li>a{
+.active-tab{
+	color:black;
+	background-color:white;
+}
+
+
+.tabs-list >li>a{
 	    text-decoration:none;
 		color:white;
 		font-size:12px;
 		
 
 }
-#tabs-list{
+.tabs-list{
 	
 	margin-top:15px;
 }
-#tabs-list >:first-child{
+.tabs-list >:first-child{
 	
 	margin-left:0;
 }
-#tabs-list >:last-child{
-	
-	margin-left:0;
-	float:right;
-}
-.active-tab{
-	color:black!important;
-	background-color:rgb(235,235,235)!important;
-	
-}
+
 /**************************************************************** report  **************************************/
 
 .tab{
 	background:rgb(235,235,235);
-	min-height:80px;
-	padding:2%;
 	
 }
 
 .user-tools{
 	
 	float:right;
-	margin:0 ;
+	margin:1.5% 2% 0 0 ;
 }
 .settings-btn {
 	width:35px;
 	height:35px;
 }
-.active-btn button{
-	background:white !important;
-}
-
-
 .settings-btn button{
 	border:0;
 	padding:0;
 	margin:0;
+	background:white;
 	width:100%;
 	height:100%;
-	background:rgb(235,235,235);
 
 }
 
 .reports-area{
+	display:none;
 	clear:right;
 	background-color:white;
 	border:rgb(235, 235, 235) solid 1px;
     box-shadow: 2px 2px 2px 2px rgb(210, 210, 210);
 	padding:2%;
+	margin:2%;
 	font-size:12px;
 	border:0;
 
@@ -304,4 +290,4 @@ padding:2% 0 0 2%;
 	
 	
 }
-/******************************************************************************************************/
+/****************************************************************    **************************************/

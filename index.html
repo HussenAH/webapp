@@ -25,7 +25,6 @@
 
 		<nav>
 			<div class="nav-section l-nav-i">
-				<p>Select <br>Reporting Platform</p>
 
 				<div class="menu">
 					<div class="menu-caption">
@@ -33,15 +32,14 @@
 					</div>
 
 					<ul class="action-list hidden no-style">
-						<li><a href="#">Corporate</a></li>
-						<li><a href="#">Simple</a></li>
-						<li><a href="#">Business</a></li>
+						<li id="op-1-1"><a href="#"></a></li>
+						<li id="op-1-2"><a href="#"></a></li>
+						<li id="op-1-3"><a href="#"></a></li>
 					</ul>
 				</div>
 			</div>
 
 			<div class="nav-section m-nav-i">
-				<p>Select <br> Dashboard</p>
 
 				<div class="menu">
 					<div class="menu-caption">
@@ -49,17 +47,16 @@
 					</div>
 
 					<ul class="action-list hidden no-style">
-						<li><a href="#">Account Dashboard</a></li>
-						<li><a href="#">Daily Huddle Dashboard</a></li>
-						<li><a href="#">Tier 2 Dashboard</a></li>
-						<li><a href="#">ADM Dashboard</a></li>
-					
+						<li id="op-2-1"><a href="#"></a></li>
+						<li id="op-2-2"><a href="#"></a></li>
+						<li id="op-2-3"><a href="#"></a></li>
+						<li id="op-2-4"><a href="#"></a></li>
+
 					</ul>
 				</div>
 			</div>
 
 			<div class="nav-section r-nav-i">
-				<p>Help &amp; <br> Tutorials</p>
 
 				<div class="menu">
 					<div class="menu-caption">
@@ -67,9 +64,9 @@
 					</div>
 
 					<ul class="action-list hidden no-style">
-						<li><a href="#">Real Time</a></li>
-						<li><a href="#">Past Data</a></li>
-						<li><a href="#">Corporate Data</a></li>
+						<li id="op-3-1"><a href="#"></a></li>
+						<li id="op-3-2"><a href="#"></a></li>
+						<li id="op-3-3"><a href="#"></a></li>
 
 					</ul>
 				</div>
@@ -77,30 +74,30 @@
 		</nav>
 
 		<section class="tabs">
-			<ul class="tabs-list no-style">
-				<li ><a href="#quick-reports">Quick Reports</a></li>
-				<li ><a href="#my-folders">My Folders</a></li>
-				<li ><a href="#my-team-folders">My Team Folders</a></li>
-				<li ><a href="#public-folders">Public Folders</a></li>
+			<ul id="tabs-list" class=" no-style">
+				<li id="tab-item1" class="active-tab"><a class="active-tab" href="#quick-reports">Quick Reports</a></li>
+				<li id="tab-item2"><a href="#my-folders">My Folders</a></li>
+				<li id="tab-item3"><a href="#my-team-folders">My Team Folders</a></li>
+				<li id="tab-item4"><a href="#public-folders">Public Folders</a></li>
 			</ul>
 
-			<div id=" quick-reports" class="tab">
-                <div class="user-tools">
-	                <div class="expand-btn hidden ">
+			<div id="quick-reports" class="tab">
+				<div class="user-tools">
+					<div class="expand-btn hidden ">
 						<a class="" target="" href="#" id="">   <!-- add class = hidden  -->
 							<img src="img/icons/expand.png" alt="">
 						</a>
-	                </div>
-	                <div class="settings-btn">
-						<button  class="" id="" >
-							<img src="img/icons/settings.png" alt="">
+					</div>
+					<div class="settings-btn active-btn" id="">
+						<button  class="active-btn" id="" >
+							<img id="" src="img/icons/settings.png" alt="">
 						</button>  
-	                </div>
-                </div>
+					</div>
+				</div>
 
 
 
-                <div class="reports-area">
+				<div class="reports-area reports-area1">
 					<ul class="no-style reports-list">
 						<li class="report">
 							<label class="report-content">Report 01</label>
@@ -136,28 +133,110 @@
 							</div>
 						</li>
 
-
 					</ul>
 					<div class="save-btn">
 						<button >save</button>
 					</div>
-
 				</div>
-                <div>
-
+				<div>
 					<div>
-						<iframe class="frame-window "src="https://www.alarab.co"></iframe>
+						<iframe class="hidden frame-window"src="http://www.ynet.co.il/"></iframe>
 					</div>
 				</div>
-
-			<div id="tab my-folders" class="tab">
 			</div>
 
-			<div id="tab my-team-folders" class="tab">
+
+			<div id="my-folders" class="tab hidden">
+					<div class="user-tools">
+							<div class="expand-btn" id="my-folder-expand-btn">
+								<a class="" target="" href="#" id="">   <!-- add class = hidden  -->
+									<img src="img/icons/expand.png" alt="">
+								</a>
+							</div>
+
+					</div>
+						<div>
+							<iframe id="my-folders-frame" class="frame-window"src="http://www.paulirish.com/"></iframe>
+						</div>
 			</div>
 
-			<div id="tab public-folders" class="tab">
+			<div id="my-team-folders" class="hidden tab">
+					<div class="user-tools">
+										<div class="expand-btn hidden ">
+											<a class="" target="" href="#" id="">   <!-- add class = hidden  -->
+												<img src="img/icons/expand.png" alt="">
+											</a>
+										</div>
+										<div class="settings-btn active-btn">
+											<button  class="" id="" >
+												<img src="img/icons/settings.png" alt="">
+											</button>  
+										</div>
+					</div>
+					<div class="reports-area">
+						<ul class="no-style reports-list">
+							<li class="report">
+								<label class="report-content">Folder 01</label>
+								<div class="report-content report-name">
+									<label for="name-in">Name</label>
+									<input class="name-in"></input>
+								</div>
+								<div class="report-content report-url">
+									<label for="url-in">URL</label>
+									<input class="url-in"></input>
+								</div>
+							</li>
+							<li class="report">
+								<label class="report-content">Folder 01</label>
+								<div class="report-content report-name">
+									<label for="name-in">Name</label>
+									<input class="name-in"></input>
+								</div>
+								<div class="report-content report-url">
+									<label for="url-in">URL</label>
+									<input class="url-in"></input>
+								</div>
+							</li>
+							<li class="report">
+								<label class="report-content">Folder 01</label>
+								<div class="report-content report-name">
+									<label for="name-in">Name</label>
+									<input class="name-in"></input>
+								</div>
+								<div class="report-content report-url">
+									<label for="url-in">URL</label>
+									<input class="url-in"></input>
+								</div>
+							</li>
+
+						</ul>
+						<div class="save-btn">
+							<button >save</button>
+						</div>
+					</div>
+					<div>
+						<div>
+							<iframe class="hidden frame-window"src="http://www.ynet.co.il/"></iframe>
+						</div>
+					</div>
+
 			</div>
+			<div id="public-folders" class="tab hidden">
+				<div class="user-tools">
+								<div class="expand-btn" id="public-folders-btn">
+									<a class="" target="" href="#" id="">   <!-- add class = hidden  -->
+										<img src="img/icons/expand.png" alt="">
+									</a>
+								</div>
+
+						</div>
+							<div>
+								<iframe id="public-folders-frame" class="frame-window"src="http://addyosmani.com/"></iframe>
+							</div>
+				</div>
+				
+			</div>
+
 		</section>
 	</section>
 
