@@ -111,19 +111,19 @@ padding:2% 0 0 2%;
 }
 .l-nav-i{
 	float:left;
-	background: url("../img/icons/action-report-new.png") left 50% top 55px no-repeat black;
+/*	background: url("../img/icons/action-report-new.png") left 50% top 55px no-repeat black;*/
 }
 .m-nav-i{
 	/*margin-left:20px;*/
 	margin-left:2%;
 
-	background: url("../img/icons/action-report-top.png") left 50% top 55px no-repeat black;
+/*	background: url("../img/icons/action-report-top.png") left 50% top 55px no-repeat black;*/
 
 }
 .r-nav-i{
 	
 	float:right;
-    background: url("../img/icons/actions-help.png") left 50% top 55px no-repeat black;
+ /*   background: url("../img/icons/actions-help.png") left 50% top 55px no-repeat black;*/
 
 }
 .nav-section:hover .action-list{
@@ -252,6 +252,15 @@ padding:2% 0 0 2%;
 
 }
 
+.webs-select{
+	float:left;
+	width:20%;
+	padding:0.5% 0 0.5% 0;
+	margin:0;
+	border:0;
+}
+
+
 .reports-area{
 	clear:right;
 	background-color:white;
@@ -330,5 +339,8 @@ padding:2% 0 0 2%;
 	height:20px;
 	
 	
+}
+iframe{
+	display:none;
 }
 /******************************************************************************************************/

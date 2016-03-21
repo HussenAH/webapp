@@ -14,11 +14,13 @@ function updateNotification (notification) {
 	}
 }
 
+
+//update data -nav section from json
 function updateNavsections(quickActions){
 	if(quickActions!== undefined)
 	{
 		var navSections=all(".nav-section");
-		//var menu_caption=all(".menu-caption");
+
 		var actionList=all(".action-list");
 		for(var i=0;i<(navSections.length);i++)
 		{
@@ -28,24 +30,16 @@ function updateNavsections(quickActions){
 		 var actions=quickActions[i].actions;
 			navSections[i].innerHTML="<p>"+label+"</p>"+ navSections[i].innerHTML;
 			navSections[i].style.background="url(./img/icons/"+ icon + ".png) left 50% top 55px no-repeat black";
-			//alert(actionsLabel);
-			//menu_caption[i].innerHTML="<p>"+actionsLabel+"</p>";
+
 		 var  actionLI=actionList[i].getElementsByTagName("li");
-		// alert("actionLi length = "+actionLI.length);
          for(var j=0;j<(actionLI.length);j++)
 		 {
-	//		actionLI[j].childNodes[0].innerHTML= actions[j].label; 
-					// alert(actionLI[j].childNodes[0].childNodes[1]);
-	//		actionLI[j].childNodes[0].href=actions[j].url; 
 			var myid="#op-"+(i+1)+"-"+(j+1);
-			//alert(myid);
 			$(myid).childNodes[0].innerHTML=actions[j].label;
 			$(myid).childNodes[0].href=actions[j].url; 	
 	
 		 }
 		}	
-//$('#myid').childNodes[0].innerHTML=actions[0].label;
-//$('#myid').childNodes[0].href=actions[0].url; 
 
 	}
 	
@@ -53,13 +47,17 @@ function updateNavsections(quickActions){
 
 
 function loadPageData(response){
-	updateNotification(response.notification);
-		
+//	alert('asd');
+		updateNotification(response.notification);
 }
 function tempLoadDataFromJson(data){
-	updateNotification(data.notification);
-	updateNavsections(data.quickActions);
-		
+    if(data!==null){
+		localStorage.setItem("localData",data);
+		updateNotification(data.notification);
+		updateNavsections(data.quickActions);
+	}else{
+		updateNotification("Failed To Load App Data!");
+	}	
 }
 
 
@@ -85,6 +83,8 @@ function deactiveCurrentTab(){
 	
 }
 }
+
+
 function activeClickedTab(tabId){
 
     $('#'+tabId).classList.add("active-tab");
@@ -117,7 +117,8 @@ function manageClickedTab(tabId){
 
 
 
-
+/**********************************************************************/
+//managed tab list on click
 var ul = document.getElementById('tabs-list'); // Parent
 
 ul.addEventListener('click', function (e) {
@@ -132,35 +133,27 @@ ul.addEventListener('click', function (e) {
 });
 
 
-/*var settings= all(".settings-btn"); 
-settings[0].addEventListener('click', function(e) {
-    var target = e.target; 
-	//$('.settings-btn').classList.toggle("active-btn");
-	//$('.reports-area').classList.toggle("hidden");
+/**********************************************************************/
 
-});*/
-
+//active the setting button
 var settings = document.getElementsByClassName("settings-btn");
 
 var activeSetting = function() {
-   // var attribute = this.getAttribute("class");
-  //  alert(attribute);
 	var settbtn=document.getElementsByClassName("settings-btn");
 	var rep_area=document.getElementsByClassName("reports-area");
 	for(var i=0;i<settbtn.length;i++){
 	 	settbtn[i].classList.toggle("active-btn");
 	    rep_area[i].classList.toggle("hidden");		
 	}
-	//$('.settings-btn').classList.toggle("active-btn");
-	//$('.reports-area').classList.toggle("hidden");	
+	
 };
 
 for (var i = 0; i < settings.length; i++) {
     settings[i].addEventListener('click', activeSetting, false);
 }
+/**********************************************************************/
 
-
-
+//active the expand button
 var expand=document.getElementsByClassName("expand-btn");
 var expandBtn = function() {
     if(this.getAttribute("id")=="my-folder-expand-btn")
@@ -179,6 +172,119 @@ var expandBtn = function() {
 for (var i = 0; i < expand.length; i++) {
     expand[i].addEventListener('click', expandBtn, false);
 }
+/**********************************************************************/
+function manageNewSave(){
+	var tab=location.hash;
+	tab=tab.substring(1);
+	var reportsLinks=[];
+	var folderLinks=[];
+
+	if(tab=="quick-reports"){
+		var reportRow=all(".report-form .row");		
+	//  	alert(tab);
+		for(var i=0;i<reportRow.length;i++){
+			var name =reportRow[i].children[1].children[1].value;
+			var url=reportRow[i].children[2].children[1].value;
+			if(name !== "" && url !== ""){
+				//here must check if url is legal
+				reportsLinks.push({
+				 Id:tab,	
+				 Name:name,
+				 URL:url
+				});			
+			}
+		}		
+		localStorage.setItem("localData", JSON.stringify(reportsLinks));
+		updateInputs(tab);
+	
+	}else if(tab=="my-team-folders"){
+		var folderRow=all(".folder-form .row");		
+		for(var i=0;i<folderRow.length;i++){
+			var name =folderRow[i].children[1].children[1].value;
+			var url=folderRow[i].children[2].children[1].value;
+			if(name !== "" && url !== ""){
+				//here must check if url is legal
+				folderLinks.push({
+				 Id:tab,	
+				 Name:name,
+				 URL:url
+				});			
+			}
+		}		
+		localStorage.setItem("localData", JSON.stringify(folderLinks));
+		updateInputs(tab);
+	
+	}
+
+		
+}
+
+function saveReportLink(name , url){
+
+	
+}
+
+
+
+function saveFolderLink(name , url){
+	
+}
+
+
+function addSelectOption(selectId){
+	
+}
+
+function removeSelectOption(selectId){
+	
+}
+
+function updateInputs(tab){
+
+	if(tab=="quick-reports")
+	{
+		var repLinks = JSON.parse(localStorage.getItem("localData"));
+		var inputNames=all('.report-form .name-in');
+		var inputURL=all('.report-form .url-in');		
+		for(var i=0;i<repLinks.length;i++)
+		{
+			if(repLinks[i].Id==tab){
+				inputNames[i].value=repLinks[i].Name;
+				inputURL[i].value=repLinks[i].URL;
+			//	alert(repLinks[i].Name);
+			}
+		}
+	}else if(tab=="my-team-folders")
+	{
+		var repLinks = JSON.parse(localStorage.getItem("localData"));
+		var inputNames=all('.folder-form .name-in');
+		var inputURL=all('.folder-form .url-in');		
+		for(var i=0;i<repLinks.length;i++)
+		{
+			if(repLinks[i].Id==tab){
+				inputNames[i].value=repLinks[i].Name;
+				inputURL[i].value=repLinks[i].URL;
+			//	alert(repLinks[i].Name);
+			}
+		}
+	}
+}
+
+
+//active the setting button
+var save_btn = document.getElementsByClassName("save-btn");
+
+
+for (var i = 0; i < save_btn.length; i++) {
+    save_btn[i].addEventListener('click', manageNewSave, false);
+}
+
+/**********************************************************************/
+
+
+
+
+
 
 
 
@@ -262,9 +368,12 @@ var jsonData={
 
 
 function initWebApp() {
-UTILS.ajax("data/config.json",{done:loadPageData});
-tempLoadDataFromJson(jsonData);
 
+//UTILS.ajax("data/config.json",{done:loadPageData});
+tempLoadDataFromJson(jsonData);
+	var tab=location.hash;
+	tab=tab.substring(1);
+	updateInputs(tab);
 }
 
 window.onLoad =  initWebApp();
