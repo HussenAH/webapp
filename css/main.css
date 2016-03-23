@@ -230,8 +230,11 @@ padding:2% 0 0 2%;
 
 .user-tools{
 	
-	float:right;
+
 	margin:0 ;
+}
+.user-tools div{
+	float:right;
 }
 .settings-btn {
 	width:35px;
@@ -240,7 +243,10 @@ padding:2% 0 0 2%;
 .active-btn button{
 	background:white !important;
 }
-
+.expand-btn{
+	padding-top:1%;
+	padding-right:2%;
+}
 
 .settings-btn button{
 	border:0;
@@ -340,7 +346,5 @@ padding:2% 0 0 2%;
 	
 	
 }
-iframe{
-	display:none;
-}
+
 /******************************************************************************************************/

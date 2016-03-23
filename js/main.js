@@ -52,7 +52,7 @@ function loadPageData(response){
 }
 function tempLoadDataFromJson(data){
     if(data!==null){
-		localStorage.setItem("localData",data);
+	//	localStorage.setItem("localData",data);
 		updateNotification(data.notification);
 		updateNavsections(data.quickActions);
 	}else{
@@ -164,39 +164,44 @@ var expandBtn = function() {
 	{
 		window.open($('#public-folders-frame').src,'_blank');
 	}
-
-	
+	if(this.getAttribute("id")=="quick-reports-expand-btn")
+	{
+		window.open($('#quick-reports-frame').src,'_blank');
+	}
+	if(this.getAttribute("id")=="my-team-folders-expand-btn")
+	{
+		window.open($('#my-team-folders-frame').src,'_blank');
+	}	
 	
 };
 
 for (var i = 0; i < expand.length; i++) {
     expand[i].addEventListener('click', expandBtn, false);
 }
-/**********************************************************************/
+/*********************************** save btn ***********************************/
 function manageNewSave(){
 	var tab=location.hash;
 	tab=tab.substring(1);
-	var reportsLinks=[];
-	var folderLinks=[];
-
+	var links=[];
 	if(tab=="quick-reports"){
 		var reportRow=all(".report-form .row");		
-	//  	alert(tab);
+ // 	alert(tab);
 		for(var i=0;i<reportRow.length;i++){
 			var name =reportRow[i].children[1].children[1].value;
 			var url=reportRow[i].children[2].children[1].value;
 			if(name !== "" && url !== ""){
 				//here must check if url is legal
-				reportsLinks.push({
+				links.push({
 				 Id:tab,	
 				 Name:name,
 				 URL:url
 				});			
 			}
 		}		
-		localStorage.setItem("localData", JSON.stringify(reportsLinks));
+		localStorage.setItem('localData', JSON.stringify(links));
 		updateInputs(tab);
-	
+		updateSelectOpttion(tab);
+//alert(tab);	
 	}else if(tab=="my-team-folders"){
 		var folderRow=all(".folder-form .row");		
 		for(var i=0;i<folderRow.length;i++){
@@ -204,46 +209,95 @@ function manageNewSave(){
 			var url=folderRow[i].children[2].children[1].value;
 			if(name !== "" && url !== ""){
 				//here must check if url is legal
-				folderLinks.push({
+				links.push({
 				 Id:tab,	
 				 Name:name,
 				 URL:url
 				});			
 			}
 		}		
-		localStorage.setItem("localData", JSON.stringify(folderLinks));
+		localStorage.setItem('localData', JSON.stringify(links));
 		updateInputs(tab);
+		updateSelectOpttion(tab);
 	
-	}
+	}	
+}
 
+
+function updateSelectOpttion(tab){
+	if(tab=="quick-reports"){
+		var Qselect=$("#quick-reports-select");
+		var Qframe=$("#quick-reports-frame");
+		var Qexpand=$("#quick-reports-expand-btn");
+		for(var i=0;i<Qselect.childNodes.length;i++){
+			 Qselect.remove(Qselect.i);
+		}
+		var links = JSON.parse(localStorage.getItem("localData"));
+			if(links.length==0){
+				Qselect.classList.add("hidden");
+				Qframe.classList.add("hidden");
+				Qexpand.classList.add("hidden");				
+			}
+			for(var i=0; i<links.length; i++){
+				if(links[i].Id == tab){
+					var name = links[i].Name;
+					if(name != ""){
+						Qselect.classList.remove("hidden");
+						Qframe.classList.remove("hidden");
+						Qframe.src=links[0].URL;
+						Qexpand.classList.remove("hidden");
+						Qexpand.src=links[0].URL;
+						}
+					var newOption = document.createElement("option");
+					newOption.text = name;
+					newOption.value = name; 
+					Qselect.appendChild(newOption);
+				}	
+			}
+		activeSetting();	
+	}else if(tab=="my-team-folders"){
+		var Fselect=$("#my-team-folders-select");
+		var Fframe=$("#my-team-folders-frame");
+		var Fexpand=$("#my-team-folders-expand-btn");
 		
+		for(var i=0;i<Fselect.childNodes.length;i++){
+			 Fselect.remove(Fselect.i);
+			 
+		}
+		var links = JSON.parse(localStorage.getItem("localData"));
+			if(links.length==0){ 
+				Fframe.classList.add("hidden");			
+				Fselect.classList.add("hidden");
+				Fexpand.classList.add("hidden");				
+				
+			}		
+			for(var i=0; i<links.length; i++){
+				if(links[i].Id == tab){
+					var name = links[i].Name;
+					if(name != "") {
+					Fselect.classList.remove("hidden");
+					Fframe.classList.remove("hidden");
+					Fframe.src=links[0].URL;	
+						Fexpand.classList.remove("hidden");
+						Fexpand.src=links[0].URL;					
+					}
+					var newOption = document.createElement("option");
+					
+					newOption.text = name;
+					newOption.value = name; 
+					Fselect.appendChild(newOption);
+				}	
+			}		
+		activeSetting();	
+	}
 }
 
-function saveReportLink(name , url){
 
-	
-}
-
-
-
-function saveFolderLink(name , url){
-	
-}
-
-
-function addSelectOption(selectId){
-	
-}
-
-function removeSelectOption(selectId){
-	
-}
 
 function updateInputs(tab){
-
 	if(tab=="quick-reports")
 	{
-		var repLinks = JSON.parse(localStorage.getItem("localData"));
+		var repLinks = JSON.parse(localStorage.getItem('localData'));
 		var inputNames=all('.report-form .name-in');
 		var inputURL=all('.report-form .url-in');		
 		for(var i=0;i<repLinks.length;i++)
@@ -256,7 +310,7 @@ function updateInputs(tab){
 		}
 	}else if(tab=="my-team-folders")
 	{
-		var repLinks = JSON.parse(localStorage.getItem("localData"));
+		var repLinks = JSON.parse(localStorage.getItem('localData'));
 		var inputNames=all('.folder-form .name-in');
 		var inputURL=all('.folder-form .url-in');		
 		for(var i=0;i<repLinks.length;i++)
@@ -374,6 +428,7 @@ tempLoadDataFromJson(jsonData);
 	var tab=location.hash;
 	tab=tab.substring(1);
 	updateInputs(tab);
+	updateSelectOpttion(tab);
 }
 
 window.onLoad =  initWebApp();
