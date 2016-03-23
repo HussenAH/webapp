@@ -240,6 +240,10 @@ padding:2% 0 0 2%;
 	width:35px;
 	height:35px;
 }
+.settings-btn :hover img{
+ 	  transform:rotate(360deg);
+	 transition-duration: 0.5s;
+}
 .active-btn button{
 	background:white !important;
 }
@@ -347,4 +351,7 @@ padding:2% 0 0 2%;
 	
 }
 
+.warrning{
+	border:solid red;
+}
 /******************************************************************************************************/

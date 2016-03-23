@@ -103,8 +103,6 @@ function activeClickedTab(tabId){
 	{
 		$('#public-folders').classList.remove("hidden");
 	}
-
- 
 }
 
 function manageClickedTab(tabId){
@@ -183,6 +181,8 @@ function manageNewSave(){
 	var tab=location.hash;
 	tab=tab.substring(1);
 	var links=[];
+	var urlRegex = new RegExp("https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,}", i);	
+	var linkRegex = new RegExp(/^(http[s]?:\/\/){0,1}(www\.){0,1}[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,5}[\.]{0,1}/);	
 	if(tab=="quick-reports"){
 		var reportRow=all(".report-form .row");		
  // 	alert(tab);
@@ -190,30 +190,103 @@ function manageNewSave(){
 			var name =reportRow[i].children[1].children[1].value;
 			var url=reportRow[i].children[2].children[1].value;
 			if(name !== "" && url !== ""){
-				//here must check if url is legal
+				reportRow[i].children[1].classList.remove('warrning');				
+				reportRow[i].children[2].classList.remove('warrning');					
+				if (urlRegex.test(url)){
 				links.push({
 				 Id:tab,	
 				 Name:name,
 				 URL:url
-				});			
+				});	
+				}else if((url.substring(0, 4) == 'www.') ||(!urlRegex.test(url) && linkRegex.test(url))) {
+					
+				if(url.substring(0, 4) == 'www.'){
+					alert("yes");
+					var newURL = "http://";
+					newURL+=url;
+					links.push({
+					 Id:tab,	
+					 Name:name,
+					 URL:newURL
+					});	
+				}
+				if(linkRegex.test(url)){
+					var newURL = "http://www.";
+					newURL+=url;
+					links.push({
+					 Id:tab,	
+					 Name:name,
+					 URL:newURL
+					});	
+				}					
+				}else {
+					reportRow[i].children[2].classList.add('warrning');
+					manageNewSave();
+				}		
+			}else if(name == "" && url !== ""){
+				manageNewSave();
+				reportRow[i].children[1].classList.add('warrning');
+			}else if(name !== "" && url == ""){
+				reportRow[i].children[2].classList.add('warrning');
+				manageNewSave();
+			}else{
+				reportRow[i].children[1].classList.remove('warrning');				
+				reportRow[i].children[2].classList.remove('warrning');				
 			}
 		}		
 		localStorage.setItem('localData', JSON.stringify(links));
 		updateInputs(tab);
 		updateSelectOpttion(tab);
-//alert(tab);	
 	}else if(tab=="my-team-folders"){
 		var folderRow=all(".folder-form .row");		
 		for(var i=0;i<folderRow.length;i++){
 			var name =folderRow[i].children[1].children[1].value;
 			var url=folderRow[i].children[2].children[1].value;
 			if(name !== "" && url !== ""){
-				//here must check if url is legal
-				links.push({
-				 Id:tab,	
-				 Name:name,
-				 URL:url
-				});			
+				folderRow[i].children[1].classList.remove('warrning');				
+				folderRow[i].children[2].classList.remove('warrning');
+				if (urlRegex.test(url)){			
+						links.push({
+						 Id:tab,	
+						 Name:name,
+						 URL:url
+						});	
+					}else if((url.substring(0, 4) == 'www.') ||(!urlRegex.test(url) && linkRegex.test(url))) {
+					
+					if(url.substring(0, 4) == 'www.'){
+					alert("yes");
+					var newURL = "http://";
+					newURL+=url;
+					links.push({
+					 Id:tab,	
+					 Name:name,
+					 URL:newURL
+					});	
+					}
+					if(linkRegex.test(url)){
+						var newURL = "http://www.";
+						newURL+=url;
+						links.push({
+						 Id:tab,	
+						 Name:name,
+						 URL:newURL
+						});	
+				  }					
+				
+	
+		    	}else {
+					folderRow[i].children[2].classList.add('warrning');
+					manageNewSave();
+				}		
+			}else if(name == "" && url !== ""){
+				manageNewSave();
+				folderRow[i].children[1].classList.add('warrning');
+			}else if(name !== "" && url == ""){
+				folderRow[i].children[2].classList.add('warrning');
+				manageNewSave();
+			}else{
+				folderRow[i].children[1].classList.remove('warrning');				
+				folderRow[i].children[2].classList.remove('warrning');				
 			}
 		}		
 		localStorage.setItem('localData', JSON.stringify(links));
@@ -325,6 +398,58 @@ function updateInputs(tab){
 }
 
 
+function updateSelect(sel){
+	var i = sel.selectedIndex;
+	var data = JSON.parse(localStorage.getItem("localData"));
+	var optionVal;
+	for(var j=0;j<data.length;j++){
+		if(data[j].Name==sel.options[i].text){
+			optionVal=data[j].URL;
+		}
+	}
+	
+	updateFrame(optionVal);
+	updateExpand(optionVal);
+    //alert(optionVal);
+	
+	
+}
+function updateFrame(optionVal){
+	var tab=location.hash;
+	tab=tab.substring(1);
+	if(tab=="quick-reports"){
+		var Qframe=$("#quick-reports-frame");
+		Qframe.src=optionVal;
+		
+	}else if(tab=="my-team-folders"){
+		var Fframe=$("#my-team-folders-frame");
+		Fframe.src=optionVal;
+
+		
+	}
+}
+function updateExpand(optionVal){
+	var tab=location.hash;
+	tab=tab.substring(1);
+	if(tab=="quick-reports"){
+		var Qexpand=$("#quick-reports-expand-btn");
+		Qexpand.src=optionVal;
+	}else if(tab=="my-team-folders"){
+		var Fexpand=$("#my-team-folders-expand-btn");
+		Fexpand.src=optionVal;
+
+	}
+}
+
+//manage select options 
+var select = document.getElementsByClassName("webs-select");
+
+for (var i = 0; i < select.length; i++) {
+  //  select[i].addEventListener('onchange', updateSelect, false);
+	select[i].onchange = function() {updateSelect(this)};
+}
+
+
 //active the setting button
 var save_btn = document.getElementsByClassName("save-btn");
 
@@ -336,8 +461,40 @@ for (var i = 0; i < save_btn.length; i++) {
 /**********************************************************************/
 
 
+function updateTabOnLoad(){
+
+	var currTab=location.hash;
+	currTab=currTab.substring(1);
+	var currTabId;
+	if(currTab=='quick-reports'){
+		currTabId='tab-item1';
+	}
+	else if(currTab=='my-folders'){
+		currTabId='tab-item2';
+	}
+	else if(currTab=='my-team-folders'){
+		currTabId='tab-item3';
+	}
+	else if(currTab=='public-folders'){
+		currTabId='tab-item4';
+	}
+	for(var i=1;i<=4;i++)
+	{
+      manageClickedTab('tab-item'+i)		
+	}	
+	updateSelectOpttion("quick-reports");
+	updateInputs("quick-reports");
+	updateSelectOpttion("my-team-folders");
+	updateInputs("my-team-folders");
+	if(currTabId==undefined){
+		currTabId='tab-item1';
+	}
+		manageClickedTab(currTabId)
+	
+}
 
 
+/**********************************************************************/
 
 
 
@@ -425,11 +582,26 @@ function initWebApp() {
 
 //UTILS.ajax("data/config.json",{done:loadPageData});
 tempLoadDataFromJson(jsonData);
+	/*var currTab=location.hash;
+	currTab=currTab.substring(1);
+
+    manageClickedTab(currTab);
+ 
 	var tab=location.hash;
 	tab=tab.substring(1);
 	updateInputs(tab);
-	updateSelectOpttion(tab);
+	updateSelectOpttion(tab);*/
+	updateTabOnLoad();
+
+	//updateInputs("quick-reports");
+	//updateSelectOpttion("quick-reports");
+	//updateInputs("my-team-folders");
+	//updateSelectOpttion("my-team-folders");
+
+	
+	
 }
+
 
 window.onLoad =  initWebApp();
 
