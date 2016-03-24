@@ -47,8 +47,13 @@ function updateNavsections(quickActions){
 
 
 function loadPageData(response){
-//	alert('asd');
+    if(response!==null){
+	//	localStorage.setItem("localData",data);
 		updateNotification(response.notification);
+		updateNavsections(response.quickActions);
+	}else{
+		updateNotification("Failed To Load App Data!");
+	}
 }
 function tempLoadDataFromJson(data){
     if(data!==null){
@@ -616,8 +621,8 @@ var jsonData={
 
 function initWebApp() {
 
-//UTILS.ajax("data/config.json",{done:loadPageData});
-tempLoadDataFromJson(jsonData);
+UTILS.ajax("data/config.json",{done:loadPageData});
+//tempLoadDataFromJson(jsonData);
 	/*var currTab=location.hash;
 	currTab=currTab.substring(1);
 

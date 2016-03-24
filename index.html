@@ -15,7 +15,8 @@
 			<a href="#"><img src="img/logo-netcraft.svg" alt="netcraft"></a>
 
 			<form class="search-box">
-				<input type="search" name="q" placeholder="search">
+			 <label for="search"><span class="hidden">-</span></label>
+				<input type="search" name="q" placeholder="search" id="search">
 			</form>
 		</div>
 	</header>
@@ -94,16 +95,17 @@
 			</ul>
 
 			<div id="quick-reports" class="tab">
+             <label for="quick-reports-select"><span class="hidden">-</span></label>			
 				<select class="webs-select hidden" id="quick-reports-select"></select>			
 				<div class="user-tools">
 					<div class="settings-btn active-btn" id="">
 						<button  class="active-btn" id="" >
-							<img id="" src="img/icons/settings.png" alt="">
+							<img id="" src="img/icons/settings.png" alt="settings-icon">
 						</button>  
 					</div>
 					<div class="expand-btn hidden" id="quick-reports-expand-btn">
 						<a class="" target="" href="#" id="">   <!-- add class = hidden  -->
-							<img src="img/icons/expand.png" alt="">
+							<img src="img/icons/expand.png" alt="expand-icon">
 						</a>
 					</div>
 
@@ -118,33 +120,33 @@
 							<label class="report-content">Report 01</label>
 							<div class="report-content report-name">
 								<label for="name-in">Name</label>
-								<input class="name-in"></input>
+								<input class="name-in" type="text"></input>
 							</div>
 							<div class="report-content report-url">
 								<label for="url-in">URL</label>
-								<input class="url-in"></input>
+								<input class="url-in" type="url"></input>
 							</div>
 						</li>
 						<li class="report row">
 							<label class="report-content">Report 01</label>
 							<div class="report-content report-name">
 								<label for="name-in">Name</label>
-								<input class="name-in"></input>
+								<input class="name-in" type="text"></input>
 							</div>
 							<div class="report-content report-url">
 								<label for="url-in">URL</label>
-								<input class="url-in"></input>
+								<input class="url-in" type="url"></input>
 							</div>
 						</li>
 						<li class="report row">
 							<label class="report-content">Report 01</label>
 							<div class="report-content report-name">
-								<label for="name-in">Name</label>
-								<input class="name-in"></input>
-							</div>
+								<label for="name-in" >Name</label>
+								<input class="name-in" type="text"></input>
+							</div> 
 							<div class="report-content report-url">
 								<label for="url-in">URL</label>
-								<input class="url-in"></input>
+								<input class="url-in" type="url"></input>
 							</div>
 						</li>
 
@@ -166,7 +168,7 @@
 					<div class="user-tools">
 							<div class="expand-btn" id="my-folder-expand-btn">
 								<a class="" target="" href="#" id="">   <!-- add class = hidden  -->
-									<img src="img/icons/expand.png" alt="">
+									<img src="img/icons/expand.png" alt="expand-icon">
 								</a>
 							</div>
 
@@ -177,16 +179,17 @@
 			</div>
 
 			<div id="my-team-folders" class="hidden tab">
+ 					<label for="my-team-folders-select"><span class="hidden">-</span></label>
 				    <select class="webs-select hidden" id="my-team-folders-select"></select>
 					<div class="user-tools">
 										<div class="settings-btn active-btn">
 											<button  class="" id="" >
-												<img src="img/icons/settings.png" alt="">
+												<img src="img/icons/settings.png" alt="sittings-icon">
 											</button>  
 										</div>					
 										<div class="expand-btn hidden" id="my-team-folders-expand-btn">
 											<a class="" target="" href="#" id="">   <!-- add class = hidden  -->
-												<img src="img/icons/expand.png" alt="">
+												<img src="img/icons/expand.png" alt="expand-icon">
 											</a>
 										</div>
 
@@ -198,33 +201,33 @@
 								<label class="report-content">Folder 01</label>
 								<div class="report-content report-name">
 									<label for="name-in">Name</label>
-									<input class="name-in"></input>
+									<input class="name-in" type="text"></input>
 								</div>
 								<div class="report-content report-url">
 									<label for="url-in">URL</label>
-									<input class="url-in"></input>
+									<input class="url-in" type="url"></input>
 								</div>
 							</li>
 							<li class="report row">
 								<label class="report-content">Folder 01</label>
 								<div class="report-content report-name">
 									<label for="name-in">Name</label>
-									<input class="name-in"></input>
+									<input class="name-in" type="text"></input>
 								</div>
 								<div class="report-content report-url">
 									<label for="url-in">URL</label>
-									<input class="url-in"></input>
+									<input class="url-in" type="url"></input>
 								</div>
 							</li>
 							<li class="report row">
 								<label class="report-content">Folder 01</label>
 								<div class="report-content report-name">
 									<label for="name-in">Name</label>
-									<input class="name-in"></input>
+									<input class="name-in" type="text"></input>
 								</div>
 								<div class="report-content report-url">
 									<label for="url-in">URL</label>
-									<input class="url-in"></input>
+									<input class="url-in" type="url"></input>
 								</div>
 							</li>
 
@@ -245,7 +248,7 @@
 				<div class="user-tools">
 								<div class="expand-btn" id="public-folders-btn">
 									<a class="" target="" href="#" id="">   <!-- add class = hidden  -->
-										<img src="img/icons/expand.png" alt="">
+										<img src="img/icons/expand.png" alt="expand-icon">
 									</a>
 								</div>
 
