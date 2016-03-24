@@ -184,8 +184,23 @@ function manageNewSave(){
 	var urlRegex = new RegExp("https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,}", i);	
 	var linkRegex = new RegExp(/^(http[s]?:\/\/){0,1}(www\.){0,1}[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,5}[\.]{0,1}/);	
 	if(tab=="quick-reports"){
-		var reportRow=all(".report-form .row");		
- // 	alert(tab);
+		var reportRow=all(".report-form .row");	
+ /***********************************************************************************************************************************************************/
+		
+ 		var data = JSON.parse(localStorage.getItem("localData"));
+            for(var i=0;i<data.length;i++){
+				if(data[i].Id=="my-team-folders"){
+				links.push({
+					 Id:data[i].Id,	
+					 Name:data[i].Name,
+					 URL:data[i].URL
+					});	
+				}
+			}
+				
+ /***********************************************************************************************************************************************************/
+
+ 
 		for(var i=0;i<reportRow.length;i++){
 			var name =reportRow[i].children[1].children[1].value;
 			var url=reportRow[i].children[2].children[1].value;
@@ -233,12 +248,29 @@ function manageNewSave(){
 				reportRow[i].children[1].classList.remove('warrning');				
 				reportRow[i].children[2].classList.remove('warrning');				
 			}
-		}		
+		}
+        		
 		localStorage.setItem('localData', JSON.stringify(links));
 		updateInputs(tab);
 		updateSelectOpttion(tab);
 	}else if(tab=="my-team-folders"){
-		var folderRow=all(".folder-form .row");		
+		var folderRow=all(".folder-form .row");	
+ /***********************************************************************************************************************************************************/
+		
+ 		var data = JSON.parse(localStorage.getItem("localData"));
+            for(var i=0;i<data.length;i++){
+				if(data[i].Id=="quick-reports"){
+				links.push({
+					 Id:data[i].Id,	
+					 Name:data[i].Name,
+					 URL:data[i].URL
+					});	
+				}
+			}
+		
+		
+ /***********************************************************************************************************************************************************/
+		
 		for(var i=0;i<folderRow.length;i++){
 			var name =folderRow[i].children[1].children[1].value;
 			var url=folderRow[i].children[2].children[1].value;
@@ -372,25 +404,29 @@ function updateInputs(tab){
 	{
 		var repLinks = JSON.parse(localStorage.getItem('localData'));
 		var inputNames=all('.report-form .name-in');
-		var inputURL=all('.report-form .url-in');		
+		var inputURL=all('.report-form .url-in');
+			var j=0;		
 		for(var i=0;i<repLinks.length;i++)
 		{
 			if(repLinks[i].Id==tab){
-				inputNames[i].value=repLinks[i].Name;
-				inputURL[i].value=repLinks[i].URL;
+				inputNames[j].value=repLinks[i].Name;
+				inputURL[j].value=repLinks[i].URL;
 			//	alert(repLinks[i].Name);
+			 j++;
 			}
 		}
 	}else if(tab=="my-team-folders")
 	{
 		var repLinks = JSON.parse(localStorage.getItem('localData'));
 		var inputNames=all('.folder-form .name-in');
-		var inputURL=all('.folder-form .url-in');		
+		var inputURL=all('.folder-form .url-in');	
+			var j=0;			
 		for(var i=0;i<repLinks.length;i++)
 		{
 			if(repLinks[i].Id==tab){
-				inputNames[i].value=repLinks[i].Name;
-				inputURL[i].value=repLinks[i].URL;
+				inputNames[j].value=repLinks[i].Name;
+				inputURL[j].value=repLinks[i].URL;
+				j++;
 			//	alert(repLinks[i].Name);
 			}
 		}
