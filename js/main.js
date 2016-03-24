@@ -55,15 +55,7 @@ function loadPageData(response){
 		updateNotification("Failed To Load App Data!");
 	}
 }
-function tempLoadDataFromJson(data){
-    if(data!==null){
-	//	localStorage.setItem("localData",data);
-		updateNotification(data.notification);
-		updateNavsections(data.quickActions);
-	}else{
-		updateNotification("Failed To Load App Data!");
-	}	
-}
+
 
 
 function deactiveCurrentTab(){
@@ -540,104 +532,13 @@ function updateTabOnLoad(){
 
 
 
-var jsonData={
-	"notification": "The data of UTF BI would be updated at 16:00 pm.",
-	"quickActions": [
-		{
-			"label": "Select<br>Reporting Platform",
-			"icon": "action-report-new",
-			"actionsLabel": "Choose QS report",
-			"actions": [
-				{
-					"label": "Corporate",
-					"url": "http://netcraft.co.il"
-				}, {
-					"label": "Simple",
-					"url": "http://netcraft.co.il"
-				}, {
-					"label": "Business",
-					"url": "http://netcraft.co.il"
-				}
-			]
-		}, {
-			"label": "Select<br>Dashboard",
-			"icon": "action-report-top",
-			"actionsLabel": "Choose Dashboard",
-			"actions": [
-				{
-					"label": "Account Dashboard",
-					"url": "http://netcraft.co.il"
-				}, {
-					"label": "Daily Huddle Dashboard",
-					"url": "http://netcraft.co.il"
-				}, {
-					"label": "Tier 2 Dashboard",
-					"url": "http://netcraft.co.il"
-				}, {
-					"label": "ADM Dashboard",
-					"url": "http://netcraft.co.il"
-				}
-			]
-		}, {
-			"label": "Help &amp;<br>Tutorials",
-			"icon": "actions-help",
-			"actionsLabel": "Choose guide",
-			"actions": [
-				{
-					"label": "Real Time",
-					"url": "http://netcraft.co.il"
-				}, {
-					"label": "Past Data",
-					"url": "http://netcraft.co.il"
-				}, {
-					"label": "Corporate Data",
-					"url": "http://netcraft.co.il"
-				}
-			]
-		}
-	],
-	"tabsList": [
-		{
-			"options": {
-				"rowLabel": "Report"
-			}
-		}, {
-			"options": {
-				"url": "http://www.paulirish.com/"
-			}
-		}, {
-			"options": {
-				"rowLabel": "Folder"
-			}
-		}, {
-			"options": {
-				"url": "http://addyosmani.com/"
-			}
-		}
-	]
-}
-
-
 
 function initWebApp() {
 
 UTILS.ajax("data/config.json",{done:loadPageData});
-//tempLoadDataFromJson(jsonData);
-	/*var currTab=location.hash;
-	currTab=currTab.substring(1);
 
-    manageClickedTab(currTab);
- 
-	var tab=location.hash;
-	tab=tab.substring(1);
-	updateInputs(tab);
-	updateSelectOpttion(tab);*/
 	updateTabOnLoad();
 
-	//updateInputs("quick-reports");
-	//updateSelectOpttion("quick-reports");
-	//updateInputs("my-team-folders");
-	//updateSelectOpttion("my-team-folders");
 
 	
 	
