@@ -197,8 +197,6 @@ function manageNewSave(){
 			}
 		}	
  /***********************************************************************************************************************************************************/
-
- 
 		for(var i=0;i<reportRow.length;i++){
 			var name =reportRow[i].children[1].children[1].value;
 			var url=reportRow[i].children[2].children[1].value;
@@ -538,26 +536,7 @@ function updateTabOnLoad(){
 
 function initWebApp() {
 
-
-var data = localStorage.getItem("localData");
-
-	if (data == null) {
-		var request = new XMLHttpRequest();
-		request.open("GET", "./data/config.json", true);
-		request.send();
-
-		request.onreadystatechange = function () {
-			if (request.readyState == 4 && request.status == 200) {
-				data = JSON.parse(request.responseText);
-				localStorage.setItem("localData",data);
-
-			}
-		}
-	}else{
-		data = JSON.parse(data);
-	}
-loadPageData(data);
-//UTILS.ajax("data/config.json",{done:loadPageData});
+UTILS.ajax("data/config.json",{done:loadPageData});
 
 updateTabOnLoad();
 
