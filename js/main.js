@@ -499,7 +499,7 @@ function updateTabOnLoad(){
 
 	var currTab=location.hash;
 	currTab=currTab.substring(1);
-	var currTabId="";
+	var currTabId;
 	if(currTab=='quick-reports'){
 		currTabId='tab-item1';
 	}
@@ -512,7 +512,7 @@ function updateTabOnLoad(){
 	else if(currTab=='public-folders'){
 		currTabId='tab-item4';
 	}
-	for(var i=4;i<=1;i--)
+	for(var i=1;i<=4;i++)
 	{
       manageClickedTab('tab-item'+i)		
 	}	
@@ -520,7 +520,7 @@ function updateTabOnLoad(){
 	updateInputs("quick-reports");
 	updateSelectOpttion("my-team-folders");
 	updateInputs("my-team-folders");
-	if(currTabId===""){
+	if(currTabId==undefined){
 		currTabId='tab-item1';
 	}
 		manageClickedTab(currTabId)
